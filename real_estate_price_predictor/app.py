@@ -58,10 +58,10 @@ if st.button("Predict Price"):
     input_df = input_df[expected_features]
 
     # Debug info
-   # st.subheader("🧪 DEBUGGING INFO")
-   # st.write("✅ Expected model features:")
+   # st.subheader("DEBUGGING INFO")
+   # st.write("Expected model features:")
    # st.write(expected_features)
-   # st.write("📦 Input DataFrame sent to model:")
+   # st.write("Input DataFrame sent to model:")
    # st.dataframe(input_df)
 
     prediction = predict(model, input_df)[0]

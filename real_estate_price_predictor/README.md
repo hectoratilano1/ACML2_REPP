@@ -1,8 +1,8 @@
-# 🏡 Real Estate Price Predictor
+# Real Estate Price Predictor
 
 This machine learning project predicts real estate prices using Linear Regression based on property features like area, number of bedrooms, and property type.
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 real_estate_price_predictor/
@@ -21,7 +21,7 @@ real_estate_price_predictor/
 └── README.md
 ```
 
-## 🚀 How to Run
+## How to Run
 
 1. Install requirements:
    ```bash
@@ -40,7 +40,7 @@ real_estate_price_predictor/
    streamlit run app.py
    ```
 
-## ✅ Output
+## Output
 
 - Model performance: MAE, RMSE, R²
 - Web app to estimate property prices interactively
