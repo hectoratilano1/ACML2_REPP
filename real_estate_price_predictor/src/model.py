@@ -22,7 +22,7 @@ def train_model(X_train, y_train):
 def save_model(model, filename="model.joblib"):
     try:
         current_dir = os.path.dirname(os.path.abspath(__file__))  # /src
-        model_path = os.path.abspath(os.path.join(current_dir, "..", "..", filename))  # up to repo root
+        model_path = os.path.abspath(os.path.join(current_dir, "..", filename))  # up to real_estate_price_predictor/
         joblib.dump(model, model_path)
         logging.info(f"✅ Model saved to: '{model_path}'")
     except Exception as e:
@@ -31,8 +31,8 @@ def save_model(model, filename="model.joblib"):
 def load_model(filename="model.joblib"):
     try:
         current_dir = os.path.dirname(os.path.abspath(__file__))  # /src
-        model_path = os.path.abspath(os.path.join(current_dir, "..", "..", filename))  # up to repo root
-        logging.info(f"Loading model from: '{model_path}'")
+        model_path = os.path.abspath(os.path.join(current_dir, "..", filename))  # up to real_estate_price_predictor/
+        logging.info(f"📦 Loading model from: '{model_path}'")
         return joblib.load(model_path)
     except FileNotFoundError:
         logging.error(f"❌ Model file '{filename}' not found at: '{model_path}'")
@@ -42,5 +42,5 @@ def load_model(filename="model.joblib"):
         raise
 
 def predict(model, input_data: pd.DataFrame):
-    logging.info("Making prediction(s)...")
+    logging.info("🔮 Making prediction(s)...")
     return model.predict(input_data)
