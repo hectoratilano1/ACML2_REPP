@@ -3,6 +3,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 import joblib
 import logging
+import os
 
 # Safe fallback logging config in case this file is run directly
 logging.basicConfig(level=logging.INFO, format="%(levelname)s - %(message)s")
@@ -18,24 +19,28 @@ def train_model(X_train, y_train):
     logging.info("Model training completed.")
     return model
 
-def save_model(model, path="model.joblib"):
+def save_model(model, filename="model.joblib"):
     try:
-        joblib.dump(model, path)
-        logging.info(f"Model saved to '{path}'")
+        current_dir = os.path.dirname(os.path.abspath(__file__))  # path to /src
+        model_path = os.path.abspath(os.path.join(current_dir, "..", filename))  # path to root
+        joblib.dump(model, model_path)
+        logging.info(f"✅ Model saved to: '{model_path}'")
     except Exception as e:
-        logging.error(f"Failed to save model: {e}", exc_info=True)
+        logging.error(f"❌ Failed to save model: {e}", exc_info=True)
 
-def load_model(path="model.joblib"):
+def load_model(filename="model.joblib"):
     try:
-        logging.info(f"Loading model from '{path}'...")
-        return joblib.load(path)
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        model_path = os.path.abspath(os.path.join(current_dir, "..", filename))
+        logging.info(f"📦 Loading model from: '{model_path}'")
+        return joblib.load(model_path)
     except FileNotFoundError:
-        logging.error(f"Model file '{path}' not found.")
+        logging.error(f"❌ Model file '{filename}' not found at: '{model_path}'")
         raise
     except Exception as e:
-        logging.error(f"Error loading model: {e}", exc_info=True)
+        logging.error(f"❌ Error loading model: {e}", exc_info=True)
         raise
 
 def predict(model, input_data: pd.DataFrame):
-    logging.info("Making prediction(s)...")
+    logging.info("🔮 Making prediction(s)...")
     return model.predict(input_data)
