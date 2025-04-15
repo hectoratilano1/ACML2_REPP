@@ -43,4 +43,4 @@ real_estate_price_predictor/
 ## Output
 
 - Model performance: MAE, RMSE, R²
-- Web app to estimate property prices interactively
+- Web app (Streamlit Cloud) to estimate property prices interactively: https://ac-ml-rep-hh-2025.streamlit.app/
